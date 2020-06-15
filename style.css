@@ -1,28 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
-html,body {
-  height: 100%;
-  width: 100%;
-  font-family: 'Poppins', san-serif;
-  collor: #222;
+
+h1 {
+  color: red;
 }
 
-.navbar {
-  padding: .8rem;
+body {
+  font-family: serif;
 }
 
-.navbar-nav li {
-  padding-right: 20px;
-}
-
-.nav-link {
-  font-size: 1.1em !important;
-}
-
-.carousel-inner {
-  width: 100%;
-  height: 100%;
-}
 
 /*   Media Queries */
 @media (max-width: 992px) {
