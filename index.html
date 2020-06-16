@@ -19,7 +19,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" >
       <div class="container-fluid" id="my_nav">
-        <a href="#" class="navbar-brand"><img src="img/logo.png" style="width: 25%; height: 25%"></a>
+        <a href="#" class="navbar-brand"><img src="img/logo.png" id="logo_pic"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"></button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -32,6 +32,9 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Earth</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Mars</a>
             </li>
           </ul>
         </div>
@@ -89,12 +92,12 @@
 
     <div class="container-fluid">
       <div class="row jumbotron" id="my_jumbotron">
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-          <h2>Mars Rover Photos</h2>
-          <p class="lead">Each rover has its own set of photos stored in the database, which can be queried separately. There are several possible queries that can be made against the API. Photos are organized by the sol (Martian rotation or day) on which they were taken, counting up from the rover's landing date. A photo taken on Curiosity's 1000th Martian sol exploring Mars, for example, will have a sol attribute of 1000. If instead you prefer to search by the Earth date on which a photo was taken, you can do that too.</p>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8 col-xl-9">
+          <h2>EPIC</h2>
+          <p class="lead">The EPIC API provides information on the daily imagery collected by DSCOVR's Earth Polychromatic Imaging Camera (EPIC) instrument. Uniquely positioned at the Earth-Sun Lagrange point, EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits using a 2048x2048 pixel CCD (Charge Coupled Device) detector coupled to a 30-cm aperture Cassegrain telescope.</p>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-          <img id="marsImg" class="img-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-4 col-xl-3">
+          <img id="epicImg" class="img-fluid">
         </div>
         <a href="#">
           <button type="button" class="btn btn-primary">Learn More</button>

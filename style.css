@@ -10,13 +10,18 @@ body {
   background-color: #3e6bb8;
 }
 
+#logo_pic {
+  width: 25%;
+  height: 25%;
+}
+
 .carouselImg {
   width: 100%;
   height: 100%;
 }
 
 #my_jumbotron {
-  background-color: #eb7b73;
+  
 }
 
 
