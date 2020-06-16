@@ -17,8 +17,8 @@
 
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" >
+      <div class="container-fluid" id="my_nav">
         <a href="#" class="navbar-brand"><img src="img/logo.png" style="width: 25%; height: 25%"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"></button>
 
@@ -51,21 +51,21 @@
       </ul>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img id="carouselImg0" style="width: 100%; height: 100%;">
+          <img id="carouselImg0" class="carouselImg">
           <div class="carousel-caption">
             <button id = "carouselButton0" type="button" class="btn btn-primary btn-lg"></button>
             <button type="button" class="btn btn-primary btn-lg" >Find another Foto</button>
           </div>
         </div>
         <div class="carousel-item">
-          <img id="carouselImg1" style="width: 100%; height: 100%;">
+          <img id="carouselImg1" class="carouselImg">
           <div class="carousel-caption">
             <button id = "carouselButton1" type="button" class="btn btn-primary btn-lg"></button>
             <button type="button" class="btn btn-primary btn-lg">Find another Foto</button>
           </div>
         </div>
         <div class="carousel-item">
-          <img id="carouselImg2" style="width: 100%; height: 100%;">
+          <img id="carouselImg2" class="carouselImg">
           <div class="carousel-caption">
             <button id = "carouselButton2" type="button" class="btn btn-primary btn-lg"></button>
             <button type="button" class="btn btn-primary btn-lg">Find another Foto</button>
@@ -88,15 +88,17 @@
 
 
     <div class="container-fluid">
-      <div class="row jumbotron">
+      <div class="row jumbotron" id="my_jumbotron">
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-          <p class="lead">Hello world</p>
+          <h2>Mars Rover Photos</h2>
+          <p class="lead">Each rover has its own set of photos stored in the database, which can be queried separately. There are several possible queries that can be made against the API. Photos are organized by the sol (Martian rotation or day) on which they were taken, counting up from the rover's landing date. A photo taken on Curiosity's 1000th Martian sol exploring Mars, for example, will have a sol attribute of 1000. If instead you prefer to search by the Earth date on which a photo was taken, you can do that too.</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-          <a href="#">
-            <button type="button" class="btn btn-outline-secondary btn-lg">Web Hosting</button>
-          </a>
+          <img id="marsImg" class="img-fluid">
         </div>
+        <a href="#">
+          <button type="button" class="btn btn-primary">Learn More</button>
+        </a>
       </div>
     </div>
 
@@ -142,15 +144,14 @@
       <hr class="my-4">
     </div>
 
-    <!-- APOD script -->
-    <script src="apod.js"></script>
+
 
 
     <!-- Two Column Section -->
 
 
     <div class="container-fluid padding">
-      <div class="row padding">
+      <div class="row padding" id="two-col_section">
         <div class="col-md-12 col-lg-6">
           <h2>Earth</h2>
           <p>Landsat imagery is provided to the public as a joint project between NASA and USGS. A recent industry report on landsat satellite imagery data estimates that total annual value to the economy of $2.19 billion, far exceeding the multi-year total cost of building, launching, and managing Landsat satellites and sensors. The value is derived from consumer use of the data. The objective of this endpoint is to give you an easy to use taste of what Landsat imagery data can provide. There are more complicate APIs available if you want to build models on top of satellite imagery, apply machine-learning, or minimize clouds in your image. NASA's Earth Science Devision has a variety of Earth imagery APIs for developers, which you can find out about in the Earthdata Developer Portal. Specifically, the GIBS (Global Imagery Browse Services) API may be of interest. The Google Earth Engine API is another powerful option. This API is powered by Google Earth Engine API, and currently only supports pan-sharpened Landsat 8 imagery.</p>
@@ -165,8 +166,7 @@
 
     <hr class="my-4">
 
-    <!-- Earth script -->
-    <script src="earth.js"></script>
+
 
     <!-- Fixed background -->
 
@@ -227,6 +227,7 @@
           </div>
         </div>
       </div>
+      <hr class="my-4">
     </div>
 
 
@@ -242,7 +243,6 @@
         <div class="col-12 social padding">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-google-plus-g"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
@@ -274,7 +274,7 @@
             <p>City</p>
           </div>
           <div class="col-12">
-            <hr class="light">
+            <hr class="light-100">
             <h5>&copy; abc.com</h5>
           </div>
         </div>
@@ -283,3 +283,13 @@
 
   </body>
 </html>
+
+
+<!-- APOD script -->
+<script src="apod.js"></script>
+
+<!-- Earth script -->
+<script src="earth.js"></script>
+
+<!-- Mars script -->
+<script src="mars.js"></script>
