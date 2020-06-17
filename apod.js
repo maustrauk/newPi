@@ -6,7 +6,7 @@ let testDate;
 let apiurl;
 let json_obj;
 
-function Get(yourUrl,get_code){
+function Get(yourUrl){
     let Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",yourUrl,false);
     Httpreq.send(null);
@@ -26,7 +26,6 @@ for (let i=0; i<3; i++) {
     document.getElementById('carouselButton'+i).textContent='"' + json_obj.title + '"';
     document.getElementById('imgTitle'+i).textContent=json_obj.title;
     document.getElementById('imgText'+i).textContent=json_obj.explanation;
-    console.log(json_obj);
   } else {
     i--;
   }

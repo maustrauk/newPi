@@ -21,7 +21,7 @@ body {
 }
 
 #my_jumbotron {
-  
+
 }
 
 
@@ -58,6 +58,14 @@ body {
 
 .fa-youtube {
   color: #bb0000;
+}
+
+#mars_card {
+  background-color: #e84e43;
+}
+
+#card_body {
+  background-color: #e38c86;
 }
 
 .fa-facebook:hover,
