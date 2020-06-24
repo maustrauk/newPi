@@ -18,10 +18,9 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" >
-      <div class="container-fluid" >
-        <a href="#" class="navbar-brand"><img src="img/logo.png" id="logo_pic"></a>
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"><img src="https://epic.gsfc.nasa.gov/epic-galleries/2017/total_solar_eclipse/full/epic_1b_20170821151450.png" class="img-fluid img-thumbnail" width="150" height="150"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive"></button>
-
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
@@ -31,7 +30,7 @@
               <a href="#nav_about" class="nav-link">About</a>
             </li>
             <li class="nav-item">
-              <a href="#nav_epic" class="nav-link">Epic</a>
+              <a href="#nav_apod" class="nav-link">APOD</a>
             </li>
             <li class="nav-item">
               <a href="#nav_earth" class="nav-link">Earth</a>
@@ -59,19 +58,25 @@
         <div class="carousel-item active img-fluid">
           <img id="carouselImg0" class="carouselImg">
           <div class="carousel-caption">
-            <button id = "carouselButton0" type="button" class="btn btn-primary btn-lg"></button>
+            <a href="#nav_about">
+              <button id = "carouselButton0" type="button" class="btn btn-primary btn-lg"></button>
+            </a>
           </div>
         </div>
         <div class="carousel-item img-fluid">
           <img id="carouselImg1" class="carouselImg">
           <div class="carousel-caption">
-            <button id ="carouselButton1" type="button" class="btn btn-primary btn-lg"></button>
+            <a href="#nav_about">
+              <button id ="carouselButton1" type="button" class="btn btn-primary btn-lg"></button>
+            </a>
           </div>
         </div>
         <div class="carousel-item img-fluid">
           <img id="carouselImg2" class="carouselImg">
           <div class="carousel-caption">
-            <button id = "carouselButton2" type="button" class="btn btn-primary btn-lg"></button>
+            <a href="#nav_about">
+              <button id = "carouselButton2" type="button" class="btn btn-primary btn-lg"></button>
+            </a>
           </div>
         </div>
       </div>
@@ -83,26 +88,6 @@
     <span class="carousel-control-next-icon" aria-hidden="false"></span>
     <span class="sr-only">Next</span>
   </a>
-    </div>
-
-
-
-    <!-- Epic -->
-
-
-    <div class="container-fluid" id="nav_epic">
-      <div class="row jumbotron" id="my_jumbotron">
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8 col-xl-9">
-          <h2>EPIC</h2>
-          <p class="lead">The EPIC API provides information on the daily imagery collected by DSCOVR's Earth Polychromatic Imaging Camera (EPIC) instrument. Uniquely positioned at the Earth-Sun Lagrange point, EPIC provides full disc imagery of the Earth and captures unique perspectives of certain astronomical events such as lunar transits using a 2048x2048 pixel CCD (Charge Coupled Device) detector coupled to a 30-cm aperture Cassegrain telescope.</p>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-4 col-xl-3">
-          <img id="epicImg" class="img-fluid">
-        </div>
-        <a href="#">
-          <button type="button" class="btn btn-primary">Learn More</button>
-        </a>
-      </div>
     </div>
 
     <!-- Welcome Section -->
@@ -144,6 +129,38 @@
       </div>
       <hr class="my-4">
     </div>
+
+
+
+    <!-- APOD -->
+
+
+    <div class="container-fluid" id="nav_apod">
+      <div class="row jumbotron" id="my_jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-8 col-xl-9">
+          <h2>APOD</h2>
+          <p class="lead">One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber video. This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned. These keywords could be used as auto-generated hashtags for twitter or instagram feeds; but generally help with discoverability of relevant imagery.</p>
+          <form  action="" class="earth-form">
+            <label for="APODate">Date</label>
+            <input type="date" name="APODate" id="APOD_date" class="form-control" >
+            <br>
+            <div class="row padding">
+              <div class="col-lg-6">
+                <a href="#" class="btn btn-primary" onclick = "return apod_api();">Submit</a>
+              </div>
+              <div class="col-lg-6">
+                <a href="#" class="btn btn-primary" onclick = "">Default</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-4 col-xl-3">
+          <img id="apodImg" class="img-fluid">
+        </div>
+      </div>
+    </div>
+
+
 
 
 
@@ -240,7 +257,41 @@
               <h4 class="card-title">Curiosity</h4>
               <p class="card-text">Part of NASA's Mars Science Laboratory mission, Curiosity is the largest and most capable rover ever sent to Mars. It launched November 26, 2011 and landed on Mars at 10:32 p.m. PDT on Aug. 5, 2012 (1:32 a.m. EDT on Aug. 6, 2012).</p>
               <p class="card-text">Curiosity set out to answer the question: Did Mars ever have the right environmental conditions to support small life forms called microbes? Early in its mission, Curiosity's scientific tools found chemical and mineral evidence of past habitable environments on Mars. It continues to explore the rock record from a time when Mars could have been home to microbial life. </p>
-              <a href="#" class="btn btn-primary">Learn More</a>
+              <form  action="" class="earth-form">
+                <label for="curiosity_sol">Sol</label>
+                <input type="number" name="curiosity_sol" id="curiosity_sol" class="form-control" step="1">
+                <br>
+                <p>Choose Camera</p>
+                <input type="radio" name="cameras" id="FHAZ" value="FHAZ" checked>
+                <label for="FHAZ">FHAZ</label>
+                <br>
+                <input type="radio" name="cameras" id="RHAZ" value="RHAZ">
+                <label for="RHAZ">RHAZ</label>
+                <br>
+                <input type="radio" name="cameras" id="MAST" value="MAST">
+                <label for="MAST">MAST</label>
+                <br>
+                <input type="radio" name="cameras" id="CHEMCAM" value="CHEMCAM">
+                <label for="CHEMCAM">CHEMCAM</label>
+                <br>
+                <input type="radio" name="cameras" id="MAHLI" value="MAHLI">
+                <label for="MAHLI">MAHLI</label>
+                <br>
+                <input type="radio" name="cameras" id="MARDI" value="MARDI">
+                <label for="MARDI">MARDI</label>
+                <br>
+                <input type="radio" name="cameras" id="NAVCAM" value="NAVCAM">
+                <label for="NAVCAM">NAVCAM</label>
+                <br>
+                <div class="row padding">
+                  <div class="col-lg-6">
+                    <a href="#" class="btn btn-primary" id="curiosity_submit">Submit</a>
+                  </div>
+                  <div class="col-lg-6">
+                    <a href="#" class="btn btn-primary" onclick = "">Default</a>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -324,4 +375,4 @@
   </body>
 </html>
 
-<script src="index.js"></script>
+<script src="nasa_api.js"></script>

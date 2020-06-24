@@ -7,17 +7,20 @@ let key = 'mtntDQvEooZap8WyRgBJrc2nx2wfisjitlLolpyk';
 let now;
 let randDate;
 let testDate;
+let apodDate;
 let apiurl;
 let json_obj;
 
 let sol;
 let camera;
+let cams;
 let rover;
 
 let lon;
 let lat;
 let dim;
 let earth_date;
+
 
 //Image Slider
 
@@ -27,7 +30,6 @@ function Get(yourUrl){
     Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",yourUrl,false);
     Httpreq.send(null);
-    console.log("function 'Get' used");
     return Httpreq.responseText;
 }
 
@@ -37,7 +39,7 @@ for (i=0; i<3; i++) {
   randDate = Math.floor(Math.random() * 31536000000) + 518400000;
   testDate = new Date(now.getTime()-randDate);
   apiurl = 'https://api.nasa.gov/planetary/apod?' + 'api_key=' + key + '&date=' + testDate.getFullYear() + '-' + (testDate.getMonth() + 1) + '-' + testDate.getDate();
-  json_obj = JSON.parse(Get(apiurl),0);
+  json_obj = JSON.parse(Get(apiurl));
   if (json_obj.media_type==="image") {
     document.getElementById('carouselImg'+i).src=json_obj.hdurl;
     document.getElementById('carouselButton'+i).textContent='"' + json_obj.title + '"';
@@ -47,12 +49,37 @@ for (i=0; i<3; i++) {
     i--;
   }
 }
+i=0;
 
 
-//Epic
 
-apiurl = 'https://api.nasa.gov/EPIC/archive/natural/' + '2019/05/30/' +'png/epic_1b_20190530011359.png'+ '?api_key=' + key;
-document.getElementById("epicImg").src=apiurl;
+//APOD
+apodDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+if (localStorage.getItem("button_apod")==="clicked") {
+  apodDate = localStorage.getItem("APOD_date");
+}
+apiurl = 'https://api.nasa.gov/planetary/apod?' + 'api_key=' + key + '&date=' + apodDate;
+json_obj = JSON.parse(Get(apiurl));
+while (json_obj.media_type!=="image") {
+  testDate = new Date(now.getTime()-86400000);
+  apiurl = 'https://api.nasa.gov/planetary/apod?' + 'api_key=' + key + '&date=' + testDate.getFullYear() + '-' + (testDate.getMonth() + 1) + '-' + testDate.getDate();
+  json_obj = JSON.parse(Get(apiurl));
+}
+
+document.getElementById("apodImg").src=json_obj.hdurl;
+
+if (localStorage.getItem("button_apod")==="clicked") {
+  window.location = '#nav_apod';
+  localStorage.setItem("button_apod","un_clicked");
+}
+
+function apod_api() {
+  localStorage.setItem("APOD_date",document.getElementById("APOD_date").value);
+  localStorage.setItem("button_apod","clicked");
+  location.reload();
+  return true;
+}
+
 
 //Earth
 
@@ -124,3 +151,19 @@ for (i=0; i<3; i++) {
     document.getElementById('card_img'+i).src=json_obj.photos["0"].img_src;
   }
 }
+i=0;
+
+
+function curiosity_api() {
+  cams = document.getElementsByName('cameras');
+  for (i=0; i<cams.length; i++) {
+    if(cams[i].checked) {
+        localStorage.setItem("curiosity_camera",cams[i].value);
+    }
+  }
+  localStorage.setItem("button_curiosity","clicked");
+  location.reload();
+  return true;
+}
+
+document.getElementById("curiosity_submit").addEventListener("click", curiosity_api);
