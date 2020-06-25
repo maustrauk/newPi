@@ -151,7 +151,20 @@ for (i=0; i<3; i++) {
     document.getElementById('card_img'+i).src=json_obj.photos["0"].img_src;
   }
 }
-i=0;
+
+if (localStorage.getItem("button_curiosity")==="clicked") {
+  sol = localStorage.getItem("curiosity_sol");
+  camera = localStorage.getItem("curiosity_camera");
+  i=0;
+
+  apiurl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + rover[i] + '/photos?' + 'sol=' + sol + '&camera=' + camera + '&api_key=' + key;
+  json_obj = JSON.parse(Get(apiurl));
+  document.getElementById('card_img'+i).src=json_obj.photos["0"].img_src;
+  console.log(json_obj.photos["0"].img_src);
+}
+
+
+
 
 
 function curiosity_api() {
@@ -161,6 +174,7 @@ function curiosity_api() {
         localStorage.setItem("curiosity_camera",cams[i].value);
     }
   }
+  localStorage.setItem("curiosity_sol",document.getElementById("curiosity_sol").value);
   localStorage.setItem("button_curiosity","clicked");
   location.reload();
   return true;
