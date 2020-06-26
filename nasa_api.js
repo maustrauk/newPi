@@ -168,7 +168,7 @@ if (localStorage.getItem("button_curiosity")==="clicked") {
 
 
 function curiosity_api() {
-  cams = document.getElementsByName('cameras');
+  cams = document.getElementsByName('cameras_curiosity');
   for (i=0; i<cams.length; i++) {
     if(cams[i].checked) {
         localStorage.setItem("curiosity_camera",cams[i].value);
@@ -180,4 +180,32 @@ function curiosity_api() {
   return true;
 }
 
+function opportunity_api() {
+  cams = document.getElementsByName('cameras_opportunity');
+  for (i=0; i<cams.length; i++) {
+    if(cams[i].checked) {
+        localStorage.setItem("opportunity_camera",cams[i].value);
+    }
+  }
+  localStorage.setItem("opportunity_sol",document.getElementById("opportunity_sol").value);
+  localStorage.setItem("button_opportunity","clicked");
+  location.reload();
+  return true;
+}
+
+function spirit_api() {
+  cams = document.getElementsByName('cameras_spirit');
+  for (i=0; i<cams.length; i++) {
+    if(cams[i].checked) {
+        localStorage.setItem("spirit_camera",cams[i].value);
+    }
+  }
+  localStorage.setItem("spirit_sol",document.getElementById("spirit_sol").value);
+  localStorage.setItem("button_spirit","clicked");
+  location.reload();
+  return true;
+}
+
 document.getElementById("curiosity_submit").addEventListener("click", curiosity_api);
+document.getElementById("opportunity_submit").addEventListener("click", opportunity_api);
+document.getElementById("spirit_submit").addEventListener("click", spirit_api);
