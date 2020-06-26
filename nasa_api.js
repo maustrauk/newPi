@@ -152,16 +152,7 @@ for (i=0; i<3; i++) {
   }
 }
 
-if (localStorage.getItem("button_curiosity")==="clicked") {
-  sol = localStorage.getItem("curiosity_sol");
-  camera = localStorage.getItem("curiosity_camera");
-  i=0;
 
-  apiurl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + rover[i] + '/photos?' + 'sol=' + sol + '&camera=' + camera + '&api_key=' + key;
-  json_obj = JSON.parse(Get(apiurl));
-  document.getElementById('card_img'+i).src=json_obj.photos["0"].img_src;
-  console.log(json_obj.photos["0"].img_src);
-}
 
 
 
