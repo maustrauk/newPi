@@ -80,11 +80,12 @@ function apod_api() {
   return true;
 }
 
+document.getElementById("apod_submit").addEventListener("click", apod_api);
 
 //Earth
 
-lon = 30.5234;
-lat = 50.4501;
+lon = 30;
+lat = 50;
 dim = 0.3;
 
 if (localStorage.getItem("button_earth")==="clicked") {
@@ -113,6 +114,7 @@ function earth_api() {
   localStorage.setItem("dim_earth",document.getElementById("zoom").value);
   localStorage.setItem("button_earth","clicked");
   location.reload();
+  console.log("earth_api OK");
   return true;
 }
 
@@ -129,6 +131,8 @@ function earth_default() {
   return true;
 }
 
+document.getElementById("earth_submit").addEventListener("click", earth_api);
+document.getElementById("earth_default").addEventListener("click", earth_default);
 
 //Mars
 
@@ -168,6 +172,7 @@ function curiosity_api() {
   localStorage.setItem("curiosity_sol",document.getElementById("curiosity_sol").value);
   localStorage.setItem("button_curiosity","clicked");
   location.reload();
+  console.log("earth_api OK");
   return true;
 }
 
