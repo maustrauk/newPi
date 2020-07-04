@@ -16,6 +16,10 @@ let camera;
 let cams;
 let rover;
 
+let sol0;
+let sol1;
+let sol2;
+
 let lon;
 let lat;
 let dim;
@@ -143,10 +147,13 @@ rover=["curiosity","opportunity","spirit"];
 for (i=0; i<3; i++) {
   if (i===1) {
     sol = Math.floor(Math.random() * 99) + 99;
+    sol1 = sol;
   }
   if  (i===2) {
     sol = Math.floor(Math.random() * 90) + 10;
+    sol2 = sol;
   }
+  sol0 = sol;
   apiurl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/' + rover[i] + '/photos?' + 'sol=' + sol + '&camera=' + camera[i] + '&api_key=' + key;
   json_obj = JSON.parse(Get(apiurl));
   if (Object.keys(json_obj.photos).length===0) {
@@ -156,11 +163,53 @@ for (i=0; i<3; i++) {
   }
 }
 
+document.getElementById("curiosity_sol").value = sol0;
+document.getElementById("opportunity_sol").value = sol1;
+document.getElementById("spirit_sol").value = sol2;
+
+document.getElementById("FHAZ0").checked = true;
+document.getElementById("RHAZ1").checked = true;
+document.getElementById("NAVCAM2").checked = true;
 
 
 
 
 
+if (localStorage.getItem("button_curiosity")==="clicked") {
+  localStorage.setItem("button_curiosity","un_clicked");
+  apiurl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=' + localStorage.getItem("curiosity_sol") + '&camera=' + localStorage.getItem("curiosity_camera") + '&api_key=' + key;
+  json_obj = JSON.parse(Get(apiurl));
+  document.getElementById("curiosity_sol").value = localStorage.getItem("curiosity_sol");
+  if (Object.keys(json_obj.photos).length===0) {
+    document.getElementById('card_img0').src='img/no_photo.png';
+  } else {
+    document.getElementById('card_img0').src=json_obj.photos["0"].img_src;
+  }
+}
+
+if (localStorage.getItem("button_opportunity")==="clicked") {
+  localStorage.setItem("button_opportunity","un_clicked");
+  apiurl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=' + localStorage.getItem("opportunity_sol") + '&camera=' + localStorage.getItem("opportunity_camera") + '&api_key=' + key;
+  json_obj = JSON.parse(Get(apiurl));
+  document.getElementById("opportunity_sol").value = localStorage.getItem("opportunity_sol");
+  if (Object.keys(json_obj.photos).length===0) {
+    document.getElementById('card_img1').src='img/no_photo.png';
+  } else {
+    document.getElementById('card_img1').src=json_obj.photos["0"].img_src;
+  }
+}
+
+if (localStorage.getItem("button_spirit")==="clicked") {
+  localStorage.setItem("button_spirit","un_clicked");
+  apiurl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?sol=' + localStorage.getItem("spirit_sol") + '&camera=' + localStorage.getItem("spirit_camera") + '&api_key=' + key;
+  json_obj = JSON.parse(Get(apiurl));
+  document.getElementById("spirit_sol").value = localStorage.getItem("spirit_sol");
+  if (Object.keys(json_obj.photos).length===0) {
+    document.getElementById('card_img2').src='img/no_photo.png';
+  } else {
+    document.getElementById('card_img2').src=json_obj.photos["0"].img_src;
+  }
+}
 
 function curiosity_api() {
   cams = document.getElementsByName('cameras_curiosity');
@@ -172,7 +221,6 @@ function curiosity_api() {
   localStorage.setItem("curiosity_sol",document.getElementById("curiosity_sol").value);
   localStorage.setItem("button_curiosity","clicked");
   location.reload();
-  console.log("earth_api OK");
   return true;
 }
 
